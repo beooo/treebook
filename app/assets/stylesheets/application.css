@@ -13,5 +13,10 @@
  */
 
 body {
- padding-top: 70px; 
+ padding-top: 50px; 
+}
+
+.alert {
+  margin-top: 10px;
+
 }
