@@ -4,3 +4,8 @@ roberto:
   profile_name: "beo"
   email: "roberto.alicata@example.com"
 
+jim:
+  first_name: "Jim"
+  last_name: "Hoskins"
+  profile_name: "jimhoskins"
+  email: "jim.hoskins@example.com"
