@@ -24,6 +24,9 @@ class ProfilesControllerTest < ActionController::TestCase
       assigns(:statuses).each do |status|
         assert_equal users(:roberto), status.user
     end
-    
   end
+  
+  
+  
+  
 end
