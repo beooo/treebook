@@ -3,6 +3,7 @@ roberto:
   last_name: "Alicata"
   profile_name: "beo"
   email: "roberto.alicata@example.com"
+  encrypted_password: "$2a$10$Fh/Hm8RxDsuPTeBUr6864.GARlcmt7zF2WspaXGr3BIv2C27N.osq"
 
 jim:
   first_name: "Jim"

@@ -10,6 +10,7 @@ end
 
 group :test do
   gem 'shoulda'
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 group :production do
@@ -18,6 +19,8 @@ end
 gem 'devise'
 
 gem 'simple_form'
+
+gem 'state_machine'
 
 gem 'rails_12factor', group: :production
 
