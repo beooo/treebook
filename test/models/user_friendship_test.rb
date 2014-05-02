@@ -146,6 +146,28 @@ class UserFriendshipTest < ActiveSupport::TestCase
 
   end #context "#delete_mutual_friendship!"
 
+  context "#block!" do
+    setup do
+      @user_friendship = UserFriendship.request(users(:roberto), users(:mike))
+    end
+
+    should "set the state to blocked" do
+      @user_friendship.block!
+      assert_equal 'blocked', @user_friendship.state
+    end
+
+    should "set the state of mutual firendship to blocked" do
+      @user_friendship.block!
+      assert_equal 'blocked', @user_friendship.mutual_friendship.state
+    end
+
+    should "not allowed new request once blocked" do
+      @user_friendship.block!
+      new_user_friendship = UserFriendship.request(users(:roberto), users(:mike))
+      assert !new_user_friendship.save
+    end
+
+  end
 
 
 

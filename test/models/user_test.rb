@@ -6,6 +6,12 @@ class UserTest < ActiveSupport::TestCase
   
   should have_many(:friends)
   
+  should have_many(:pending_user_friendships)
+  should have_many(:pending_friends)
+
+  should have_many(:requested_user_friendships)
+  should have_many(:requested_friends)
+
   test "a user should enter a first name" do
     user = User.new
     assert !user.save
