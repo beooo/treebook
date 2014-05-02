@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
             class_name: 'UserFriendship',
             foreign_key: :user_id
 
-
   has_many :pending_friends, through: :pending_user_friendships, source: :friend
   
   
@@ -35,9 +34,21 @@ class User < ActiveRecord::Base
             class_name: 'UserFriendship',
             foreign_key: :user_id
 
+  has_many :requested_friends, through: :pending_user_friendships, source: :friend
 
-  has_many :requested_friends, through: :requested_user_friendships, source: :friend
+  has_many :blocked_user_friendships,
+            -> { where state: 'blocked' },
+            class_name: 'UserFriendship',
+            foreign_key: :user_id
 
+  has_many :blocked_friends, through: :pending_user_friendships, source: :friend
+
+    has_many :accepted_user_friendships,
+            -> { where state: 'accepted' },
+            class_name: 'UserFriendship',
+            foreign_key: :user_id
+
+  has_many :accepted_friends, through: :pending_user_friendships, source: :friend
 
 
   def full_name

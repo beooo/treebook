@@ -16,3 +16,9 @@ mike:
   last_name: "The Frog"
   profile_name: "mikethefrog"
   email: "mikethefrog@example.com"
+
+blocked_friend:
+  first_name: "Blocked"
+  last_name: "Friend"
+  profile_name: "youblockedme"
+  email: "blocked@example.com"

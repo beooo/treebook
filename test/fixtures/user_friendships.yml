@@ -8,3 +8,7 @@ one:
   user: roberto
   friend: jim
 
+blocked_by_roberto:
+  user: roberto
+  friend: blocked_friend
+  state: 'blocked'
