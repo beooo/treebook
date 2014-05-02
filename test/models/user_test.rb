@@ -73,8 +73,18 @@ class UserTest < ActiveSupport::TestCase
     assert users(:roberto).pending_friends.include?(users(:jim))
   end
 
-  test "taht calling to_param on a user returns the profile_name" do
+  test "that calling to_param on a user returns the profile_name" do
     assert_equal "beo", users(:roberto).to_param
   end
   
+  context "#has_blocked?" do
+    should "return true if a user blocked another user" do
+      assert users(:roberto).has_blocked?(users(:blocked_friend))
+    end
+
+    should "return false if a user not blocked another user" do
+      assert !users(:roberto).has_blocked?(users(:jim))
+    end
+  end
+
 end

@@ -41,14 +41,14 @@ class User < ActiveRecord::Base
             class_name: 'UserFriendship',
             foreign_key: :user_id
 
-  has_many :blocked_friends, through: :pending_user_friendships, source: :friend
+  has_many :blocked_friends, through: :blocked_user_friendships, source: :friend
 
     has_many :accepted_user_friendships,
             -> { where state: 'accepted' },
             class_name: 'UserFriendship',
             foreign_key: :user_id
 
-  has_many :accepted_friends, through: :pending_user_friendships, source: :friend
+  has_many :accepted_friends, through: :accepted_user_friendships, source: :friend
 
 
   def full_name
@@ -67,5 +67,9 @@ class User < ActiveRecord::Base
     "http://gravatar.com/avatar/#{hash}"
   end
   
+  def has_blocked?(other_user)
+    blocked_friends.include?(other_user)
+  end
+
   
 end
