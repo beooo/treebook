@@ -22,6 +22,8 @@ gem 'simple_form'
 
 gem 'state_machine'
 
+gem 'draper', '~> 1.3'
+
 gem 'rails_12factor', group: :production
 
 # Use SCSS for stylesheets
