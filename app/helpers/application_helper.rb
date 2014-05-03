@@ -5,11 +5,9 @@ module ApplicationHelper
   end
 
   def status_document_link(status)
-    html = ""
     if status.document && status.document.attachment?
-      html << content_tag(:span , "Attachment", class: "label label-info")
-      html << link_to(status.document.attachment_file_name, status.document.attachment.url)
-      return html.html_safe
+      content_tag(:span , "Attachment", class: "label label-info") +
+      link_to(status.document.attachment_file_name, status.document.attachment.url)
     end
   end
 
