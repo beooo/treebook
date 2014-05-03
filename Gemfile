@@ -6,6 +6,7 @@ gem 'rails', '4.0.2'
 # Use sqlite3 as the database for Active Record
 group :development, :test do
   gem 'sqlite3'
+  gem 'log_buddy'
 end
 
 group :test do
@@ -16,15 +17,13 @@ end
 group :production do
   gem 'pg'
 end
+
 gem 'devise'
-
 gem 'simple_form'
-
 gem 'state_machine'
-
 gem 'draper', '~> 1.3'
-
 gem "js-routes"
+gem "paperclip", "~> 4.1"
 
 gem 'rails_12factor', group: :production
 
