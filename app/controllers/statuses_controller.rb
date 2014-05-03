@@ -16,6 +16,7 @@ class StatusesController < ApplicationController
   # GET /statuses/new
   def new
     @status = Status.new
+    @status.build_document
   end
 
   # GET /statuses/1/edit
@@ -26,6 +27,7 @@ class StatusesController < ApplicationController
   # POST /statuses.json
   def create
     @status = current_user.statuses.new(status_params)
+
 
     respond_to do |format|
       if @status.save
@@ -79,6 +81,6 @@ class StatusesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def status_params
-      params.require(:status).permit(:name, :content, :user_id)
+      params.require(:status).permit(:name, :content, :user_id, document_attributes:[:attachment] )
     end
 end

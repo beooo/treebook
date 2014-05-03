@@ -2,6 +2,10 @@ require 'test_helper'
 
 class StatusTest < ActiveSupport::TestCase
   
+  should belong_to :user
+  should belong_to :document
+  should accept_nested_attributes_for :document
+
   test "that a status requires content" do
     status = Status.new
     assert !status.save
