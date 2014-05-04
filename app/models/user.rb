@@ -55,10 +55,16 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   def self.get_gravatars
-    all.each do
+    all.each do |user|
       if !user.avatar?
-        user.avatar = URI.parse(user_gravatar_url)
-        user.save
+        user.avatar = URI.parse(user.gravatar_url)
+        if user.save
+          print "."
+        else
+          puts user.gravatar_url
+          puts URI.parse(user.gravatar_url)
+          puts user.errors.messages
+        end
       end
     end
   end
