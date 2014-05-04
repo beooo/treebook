@@ -50,7 +50,8 @@ class StatusesController < ApplicationController
     end
 
     respond_to do |format|
-      if @status.update(status_params) && @document.update_attributes(params[:status][:document_attributes])
+      if @status.update(status_params) && (!@document.nil? && @document.update_attributes(params[:status][:document_attributes]))
+
         format.html { redirect_to @status, notice: 'Status was successfully updated.' }
         format.json { head :no_content }
       else
