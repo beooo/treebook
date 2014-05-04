@@ -1,29 +1,57 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
-
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %></div>
-
-  <div><%= f.submit "Update" %></div>
+<%= page_header do %>
+  <h2>Edit My Profile</h2>
 <% end %>
 
-<h3>Cancel my account</h3>
+<div class="row">
+  <div class="col-md-6">
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, class: 'form-horizontal'}) do |f| %>
+  <%= devise_error_messages! %>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <fieldset>
+    <legend>About Me</legend>
+    <div class="form-gorup">
+    <%= f.input :first_name, input_html: {class: 'form-control input-lg'} %>
+    <%= f.input :last_name, input_html: {class: 'form-control input-lg'} %>
+    <%= f.input :email, input_html: {class: 'form-control input-lg'} %>
+    </div>
+  </fieldset>
 
-<%= link_to "Back", :back %>
+  <br>
+  <fieldset>
+    <legend>Profile Picture</legend>
+    <%= f.input :avatar, as: :file %>
+    <% if f.object.avatar? %>
+    <div class="control-group">
+      <label class="control-label">Current avatar</label>
+      <div class="controls">
+        <%= image_tag f.object.avatar.url %>
+      </div>
+    </div>
+
+    <% end %>
+  </fieldset>
+
+  <br>
+  <fieldset>
+    <legend>Update Password</legend>
+    <div class="form-gorup">
+    <%= f.input :password,hint: "Leave blank if you don't want to change it", input_html: {class: 'form-control input-lg', autocomplete: 'off'} %>
+    <%= f.input :password_confirmation, input_html: {class: 'form-control input-lg', autocomplete: 'off'} %>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Comfirm Changes</legend>
+    <%= f.input :current_password, hint: "We need your current password to confirm your changes", input_html: {class: 'form-control input-lg', autocomplete: 'off'} %>
+  </fieldset>
+
+ <div class="form-actions">
+    <%= f.submit "Update", class: 'btn btn-primary' %>
+    <%= link_to "Back", root_path, class: 'btn' %>
+    <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: 'btn btn-danger pull-right' %>
+  </div>
+
+
+<% end %>
+  </div>
+</div>
