@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   has_many :statuses
   has_many :user_friendships
 
+  has_many :albums
+  has_many :pictures
+
 
   has_many :friends, -> { where user_friendships: {state: 'accepted' }}, :through => :user_friendships
 
