@@ -61,7 +61,7 @@ class PicturesController < ApplicationController
   def destroy
     @picture.destroy
     respond_to do |format|
-      format.html { redirect_to pictures_url }
+      format.html { redirect_to album_pictures_path(@album) }
       format.json { head :no_content }
     end
   end
