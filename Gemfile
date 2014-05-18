@@ -24,6 +24,7 @@ gem 'state_machine'
 gem 'draper', '~> 1.3'
 gem "js-routes"
 gem "paperclip", "~> 4.1"
+gem 'twitter-bootstrap-rails'
 
 gem 'rails_12factor', group: :production
 

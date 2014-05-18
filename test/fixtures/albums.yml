@@ -1,9 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user_id:
-  title: MyString
+vacation:
+  user: roberto
+  title: Vacation Pictures
 
-two:
-  user_id:
-  title: MyString
