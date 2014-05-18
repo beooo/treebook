@@ -33,6 +33,7 @@ class PicturesController < ApplicationController
   def create
     @picture = @album.pictures.new(picture_params)
     @picture.user = current_user
+    current_user.create_activity(@picture, 'created')
 
     respond_to do |format|
       if @picture.save
@@ -50,6 +51,7 @@ class PicturesController < ApplicationController
   def update
     respond_to do |format|
       if @picture.update(picture_params)
+        current_user.create_activity(@picture, 'updated')
         format.html { redirect_to album_pictures_path(@album), notice: 'Picture was successfully updated.' }
         format.json { head :no_content }
       else
@@ -63,6 +65,7 @@ class PicturesController < ApplicationController
   # DELETE /pictures/1.json
   def destroy
     @picture.destroy
+    current_user.create_activity(@picture, 'deleted')
     respond_to do |format|
       format.html { redirect_to album_pictures_path(@album) }
       format.json { head :no_content }
