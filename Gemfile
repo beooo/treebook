@@ -25,6 +25,8 @@ gem 'draper', '~> 1.3'
 gem "js-routes"
 gem "paperclip", "~> 4.1"
 gem 'twitter-bootstrap-rails'
+gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-will_paginate'
 
 gem 'rails_12factor', group: :production
 
